@@ -20,12 +20,12 @@ router.post('/signup', async(req, res) => {
 });
 
 router.post('/signin', async(req, res) => {
-    // Implement admin signup logic
+    // Implement admin signin logic
      const username = req.body.username;
      const password = req.body.password;
 
-     const user= await User.find({
-        username,password
+     const user= await Admin.findOne({
+        username:username,password:password
      })
      if(user){
           const token = jwt.sign({ username }, JWT_SECRET);
